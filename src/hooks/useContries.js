@@ -13,6 +13,7 @@ const GET_COUNTRIES = gql`
 			currency
 			emoji
 			capital
+			code
 		}
 	}
 `;
