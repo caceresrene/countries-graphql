@@ -10,7 +10,6 @@ export default function CountryCard({
 }) {
 	// flagpedia only supports lower case codes
 	code = code.toLowerCase();
-	console.log(language);
 	return (
 		<div className='rounded-lg p-4 shadow-md bg-white space-y-2'>
 			<div className='flex gap-2 items-center'>
