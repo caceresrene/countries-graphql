@@ -8,6 +8,11 @@ Link a la app en producción: [Website](https://countrysearch1.netlify.app/)
 | :---------------------------: | :--------------------------: |
 | ![](imgs/landing-desktop.png) | ![](imgs/landing-mobile.png) |
 
+## Tech Stack
+- React, ApolloClient
+- Vite (instead of Create React App)
+- Tailwind CSS for beutiful styling
+
 ## Consideraciones que se tomaron
 
 - Si bien el grafo venía con un emoji para la bandera, [esta no era visible en Windows](https://www.emojiall.com/en/blog/321) por lo que decidi usar [Flagpedia waving flag](https://flagpedia.net/download/icons) a través de los códigos de país que daba el grafo.
