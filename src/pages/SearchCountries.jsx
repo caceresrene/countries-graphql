@@ -35,7 +35,7 @@ export default function SearchCountries() {
 				<p className='text-center'>
 					These countries / territories are located in...
 				</p>
-				<div className='flex justify-evenly'>
+				<div className='flex justify-evenly flex-wrap'>
 					{filteredContinents.map((continent) => (
 						<p className='font-semibold p-1 text-lg'>{continent}</p>
 					))}
