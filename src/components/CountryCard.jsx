@@ -6,7 +6,7 @@ export default function CountryCard({
 	currency,
 	capital,
 	continent,
-	language,
+	languages,
 }) {
 	// flagpedia only supports lower case codes
 	code = code.toLowerCase();
@@ -20,9 +20,13 @@ export default function CountryCard({
 				<h2 className='text-xl font-bold'>{name}</h2>
 			</div>
 			<p>
-				{name} is located in {continent}, their capital is {capital} and they use{' '}
-				{currency} as their currency
+				{name} is located in {continent}, their capital is {capital} and they use {currency} (ISO 4217 code) as their currency 
 			</p>
+			<div className='flex gap-2 flex-wrap'>
+				{languages.map(({ name }) => (
+					<p className='rounded py-0.5 px-1 bg-gray-200'>{name}</p>
+				))}
+			</div>
 		</div>
 	);
 }
