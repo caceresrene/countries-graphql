@@ -18,7 +18,7 @@ const GET_COUNTRIES = gql`
 	}
 `;
 
-export function useContries() {
+export function useCountries() {
 	const { error, loading, data } = useQuery(GET_COUNTRIES);
 	return {
 		error,

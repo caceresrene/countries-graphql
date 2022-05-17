@@ -1,25 +1,56 @@
-import React from 'react';
+import { useState } from 'react';
 import CountryCard from '../components/CountryCard';
-import { useContries } from '../hooks/useContries';
+import SearchBar from '../components/SearchBar';
+import { useCountries } from '../hooks/useCountries';
+import IconLoading from '../icons/IconLoading';
 
 export default function SearchCountries() {
-	const { loading, error, data } = useContries();
+	const [filteredData, setFilteredData] = useState([]);
+
+	const { loading, error, data } = useCountries();
+
 	if (loading || error) {
-		return <p>Loading</p>;
+		return (
+			<span className='m-auto flex justify-center h-screen items-center'>
+				<IconLoading />
+			</span>
+		);
 	}
+
+	// Continents in which the filtered countries are located.
+	let filteredContinents = [];
+	filteredData.forEach((country) => {
+		if (!filteredContinents.includes(country.continent.name)) {
+			filteredContinents.push(country.continent.name);
+		}
+	});
+
 	return (
 		<div>
-			<h1 className='font-bold text-2xl my-4'>Country Search</h1>
-			<section className='grid  md:grid-cols-3 gap-4'>
-				{data.countries.map((c, index) => (
+			<h1 className='font-bold text-3xl mt-4'>Country Search</h1>
+			<p>Get information about countries and territories!</p>
+			<SearchBar data={data} setFilteredData={setFilteredData} />
+			{/* Continents */}
+			<section className='my-2'>
+				<p className='text-center'>
+					These countries / territories are located in...
+				</p>
+				<div className='flex justify-evenly'>
+					{filteredContinents.map((continent) => (
+						<p className='font-semibold p-1 text-lg'>{continent}</p>
+					))}
+				</div>
+			</section>
+			{/* Countries */}
+			<section className='grid  md:grid-cols-3 gap-4 mb-8'>
+				{filteredData.map((c, index) => (
 					<CountryCard
 						key={index}
 						name={c.name}
-						emoji={c.emoji}
 						currency={c.currency}
 						capital={c.capital}
 						continent={c.continent.name}
-						language={c.languages.name}
+						languages={c.languages}
 						code={c.code}
 					/>
 				))}
